@@ -1,24 +1,109 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-    <title>BI for Growth | Business Intelligence Consulting</title>
-    <meta name="description" content="Expert business intelligence consulting services including business process creation, data analysis automation, data visualization, and custom business reports to drive your company's growth." />
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="BI for Growth | Business Intelligence Consulting" />
-    <meta property="og:description" content="Expert business intelligence consulting services to optimize your business processes and drive sustainable growth." />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://biforgrowth.com" />
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-    <!-- This is a replit script which adds a banner on the top of the page when opened in development mode outside the replit environment -->
-    <script type="text/javascript" src="https://replit.com/public/js/replit-dev-banner.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Expert business intelligence consulting services including business process creation, data analysis automation, data visualization, and custom business reports.">
+  <title>BI for Growth | Business Intelligence Consulting</title>
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <span class="bi">BI</span> <span class="for">for</span> <span class="growth">Growth</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About Us</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  
+  <main>
+    <section id="hero">
+      <h1>Expert Business Intelligence Consulting</h1>
+      <p>We help businesses optimize their processes and drive sustainable growth.</p>
+      <a href="#contact" class="cta-button">Contact Us</a>
+    </section>
+    
+    <section id="services">
+      <h2>Our Services</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Business Process Creation</h3>
+          <p>Streamline your operations with custom business processes.</p>
+        </div>
+        <div class="service-card">
+          <h3>Data Analysis Automation</h3>
+          <p>Save time and reduce errors with automated data analysis.</p>
+        </div>
+        <div class="service-card">
+          <h3>Data Visualization</h3>
+          <p>Transform complex data into clear, actionable insights.</p>
+        </div>
+        <div class="service-card">
+          <h3>Custom Business Reports</h3>
+          <p>Get tailored reports that focus on what matters most.</p>
+        </div>
+        <div class="service-card">
+          <h3>Market & Competition Reports</h3>
+          <p>Stay ahead with detailed analysis of your market.</p>
+        </div>
+      </div>
+    </section>
+    
+    <section id="contact">
+      <h2>Contact Us</h2>
+      <form id="contactForm" method="POST" action="/api/contact">
+        <div class="form-group">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Your Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="company">Your Company</label>
+          <input type="text" id="company" name="company">
+        </div>
+        
+        <div class="form-group">
+          <label for="service">Service of Interest</label>
+          <select id="service" name="service" required>
+            <option value="" disabled selected>Select a service</option>
+            <option value="business-process">Business Process Creation</option>
+            <option value="data-automation">Data Analysis Automation</option>
+            <option value="data-visualization">Data Visualization</option>
+            <option value="business-reports">Custom Business Reports</option>
+            <option value="market-reports">Market & Competition Reports</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Your Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+      <div id="formStatus" class="hidden">
+        <div class="success-message">
+          <h3>Thank you for contacting us!</h3>
+          <p>We'll be in touch with you shortly.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+  
+  <footer>
+    <p>&copy; 2025 BI for Growth. All rights reserved.</p>
+  </footer>
+  
+  <script src="/js/main.js"></script>
+</body>
 </html>
