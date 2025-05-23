@@ -1,4 +1,5 @@
-// api/contact.js - Vercel Serverless Function
+// api/contact-simple.js
+const axios = require('axios');
 
 module.exports = async (req, res) => {
   // Only allow POST requests
@@ -34,26 +35,22 @@ module.exports = async (req, res) => {
       message: contactData.message
     };
     
-    // Send the request to FormSpree using native fetch
-    const response = await fetch('https://formspree.io/f/xgvkbknj', {
-      method: 'POST',
+    // Send the request to FormSpree
+    const response = await axios.post('https://formspree.io/f/xgvkbknj', formData, {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
-      },
-      body: JSON.stringify(formData)
+      }
     });
     
-    const responseData = await response.json();
-    
-    if (response.ok) {
+    if (response.status >= 200 && response.status < 300) {
       console.log("Email sent successfully via FormSpree to info@biforgrowth.com");
       
       return res.status(201).json({
         message: "Contact form submitted successfully"
       });
     } else {
-      console.error("FormSpree error:", responseData);
+      console.error("FormSpree error:", response.data);
       return res.status(500).json({
         message: "Error sending email"
       });
