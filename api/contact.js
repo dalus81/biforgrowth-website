@@ -1,65 +1,74 @@
-// api/contact-simple.js
-const axios = require('axios');
-
-module.exports = async (req, res) => {
-  // Only allow POST requests
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
-  }
-
-  try {
-    // Get the form data from request body
-    const contactData = req.body;
-    
-    // Basic validation
-    if (!contactData.name || !contactData.email || !contactData.service || !contactData.message) {
-      return res.status(400).json({
-        message: 'Missing required fields',
-      });
-    }
-
-    // Log the contact submission (will appear in Vercel logs)
-    console.log('New contact form submission:', {
-      name: contactData.name,
-      email: contactData.email,
-      company: contactData.company,
-      service: contactData.service
-    });
-    
-    // Format the data for FormSpree
-    const formData = {
-      name: contactData.name,
-      email: contactData.email,
-      company: contactData.company || 'Not provided',
-      service: contactData.service,
-      message: contactData.message
-    };
-    
-    // Send the request to FormSpree
-    const response = await axios.post('https://formspree.io/f/xgvkbknj', formData, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+// Contact form handler
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault(); // Prevent the default form submission
+      
+      // Get form data
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        company: document.getElementById('company')?.value || '',
+        service: document.getElementById('service').value,
+        message: document.getElementById('message').value
+      };
+      
+      // Show loading state
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+      submitButton.textContent = 'Sending...';
+      submitButton.disabled = true;
+      
+      try {
+        console.log('Submitting form data:', formData);
+        
+        // Submit to your API endpoint
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+        
+        console.log('Response status:', response.status);
+        
+        let result;
+        try {
+          result = await response.json();
+          console.log('Response data:', result);
+        } catch (jsonError) {
+          console.error('Error parsing JSON response:', jsonError);
+          result = { message: 'Error processing server response' };
+        }
+        
+        if (response.ok) {
+          // Show success message
+          const formStatus = document.getElementById('formStatus');
+          if (formStatus) {
+            formStatus.classList.remove('hidden');
+            contactForm.style.display = 'none';
+          } else {
+            alert('Thank you! Your message has been sent successfully. We\'ll get back to you soon.');
+          }
+          
+          // Reset form
+          contactForm.reset();
+        } else {
+          alert('Error: ' + (result.message || 'Something went wrong. Please try again.'));
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('An error occurred while submitting the form. Please try again.');
+      } finally {
+        // Reset button state
+        submitButton.textContent = originalButtonText;
+        submitButton.disabled = false;
       }
     });
-    
-    if (response.status >= 200 && response.status < 300) {
-      console.log("Email sent successfully via FormSpree to info@biforgrowth.com");
-      
-      return res.status(201).json({
-        message: "Contact form submitted successfully"
-      });
-    } else {
-      console.error("FormSpree error:", response.data);
-      return res.status(500).json({
-        message: "Error sending email"
-      });
-    }
-  } catch (error) {
-    console.error("Error handling contact form submission:", error);
-    
-    return res.status(500).json({
-      message: "An error occurred while processing your request"
-    });
+  } else {
+    console.warn('Contact form element not found on page');
   }
-};
+});
