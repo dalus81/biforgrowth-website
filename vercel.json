@@ -6,6 +6,7 @@
   ],
   "routes": [
     { "src": "/api/contact", "dest": "/api/contact-simple.js" },
-    { "src": "/(.*)", "dest": "/dist/public/$1" }
+    { "src": "/(assets/.+)", "dest": "/dist/public/$1" },
+    { "src": "/(.*)", "dest": "/dist/public/index.html" }
   ]
 }
