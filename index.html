@@ -1,109 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Expert business intelligence consulting services including business process creation, data analysis automation, data visualization, and custom business reports.">
-  <title>BI for Growth | Business Intelligence Consulting</title>
-  <link rel="stylesheet" href="/css/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BI for Growth - Business Intelligence consulting company specializing in business process creation, data analysis automation, data visualization, and custom business reports.">
+    <title>BI for Growth - Business Intelligence Consulting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 <body>
-  <header>
-    <div class="logo">
-      <span class="bi">BI</span> <span class="for">for</span> <span class="growth">Growth</span>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="#services">Services</a></li>
-        <li><a href="#about">About Us</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
-  
-  <main>
-    <section id="hero">
-      <h1>Expert Business Intelligence Consulting</h1>
-      <p>We help businesses optimize their processes and drive sustainable growth.</p>
-      <a href="#contact" class="cta-button">Contact Us</a>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <h1 class="logo">
+                    <span class="logo-bi">BI</span> <span class="logo-for">for</span> <span class="logo-growth">Growth</span>
+                </h1>
+                <ul class="main-nav">
+                    <li><a href="#" class="current">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Transform complex data into clear, actionable business insights</h1>
+                <p>We help businesses leverage data to make informed decisions and drive growth.</p>
+                <a href="#contact" class="btn">Get Started</a>
+            </div>
+        </div>
     </section>
-    
-    <section id="services">
-      <h2>Our Services</h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <h3>Business Process Creation</h3>
-          <p>Streamline your operations with custom business processes.</p>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Services</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-sitemap"></i>
+                    </div>
+                    <h3>Business Process Creation</h3>
+                    <p>We design and implement efficient business processes that streamline operations and enhance productivity.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>Data Analysis Automation</h3>
+                    <p>Our automated data analysis solutions save time and resources while ensuring accuracy and consistency.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Data Visualization</h3>
+                    <p>We transform complex data into compelling visual representations that make it easy to identify patterns and trends.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <h3>Custom Business Reports</h3>
+                    <p>Tailored P&L, cost, commercial analysis, and reporting solutions that provide the exact insights your business needs to make informed decisions.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Market & Competition Reports</h3>
+                    <p>Comprehensive analysis of market trends, competitor strategies, and industry dynamics to inform your business strategy.</p>
+                </div>
+            </div>
         </div>
-        <div class="service-card">
-          <h3>Data Analysis Automation</h3>
-          <p>Save time and reduce errors with automated data analysis.</p>
-        </div>
-        <div class="service-card">
-          <h3>Data Visualization</h3>
-          <p>Transform complex data into clear, actionable insights.</p>
-        </div>
-        <div class="service-card">
-          <h3>Custom Business Reports</h3>
-          <p>Get tailored reports that focus on what matters most.</p>
-        </div>
-        <div class="service-card">
-          <h3>Market & Competition Reports</h3>
-          <p>Stay ahead with detailed analysis of your market.</p>
-        </div>
-      </div>
     </section>
-    
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <form id="contactForm" method="POST" action="/api/contact">
-        <div class="form-group">
-          <label for="name">Your Name</label>
-          <input type="text" id="name" name="name" required>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-content">
+                    <h2>Our Approach</h2>
+                    <p>A structured methodology to deliver measurable results for your business through data-driven insights.</p>
+                    <p>At BI for Growth, we specialize in helping businesses in the retail and energy sectors transform their data into actionable insights. Our team of experts combines industry knowledge with technical expertise to deliver tailored solutions that drive growth and efficiency.</p>
+                    <a href="#contact" class="btn">Contact Us</a>
+                </div>
+                <div class="about-image">
+                    <img src="/images/business-analysis.jpg" alt="Data analysis visualization">
+                </div>
+            </div>
         </div>
-        
-        <div class="form-group">
-          <label for="email">Your Email</label>
-          <input type="email" id="email" name="email" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="company">Your Company</label>
-          <input type="text" id="company" name="company">
-        </div>
-        
-        <div class="form-group">
-          <label for="service">Service of Interest</label>
-          <select id="service" name="service" required>
-            <option value="" disabled selected>Select a service</option>
-            <option value="business-process">Business Process Creation</option>
-            <option value="data-automation">Data Analysis Automation</option>
-            <option value="data-visualization">Data Visualization</option>
-            <option value="business-reports">Custom Business Reports</option>
-            <option value="market-reports">Market & Competition Reports</option>
-          </select>
-        </div>
-        
-        <div class="form-group">
-          <label for="message">Your Message</label>
-          <textarea id="message" name="message" rows="5" required></textarea>
-        </div>
-        
-        <button type="submit" class="submit-btn">Send Message</button>
-      </form>
-      <div id="formStatus" class="hidden">
-        <div class="success-message">
-          <h3>Thank you for contacting us!</h3>
-          <p>We'll be in touch with you shortly.</p>
-        </div>
-      </div>
     </section>
-  </main>
-  
-  <footer>
-    <p>&copy; 2025 BI for Growth. All rights reserved.</p>
-  </footer>
-  
-  <script src="/js/main.js"></script>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Us</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <p>Have a question or want to learn more about how we can help your business? Reach out to us.</p>
+                    <p><i class="fas fa-envelope"></i> info@biforgrowth.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Dublin, Ireland</p>
+                </div>
+                <div class="contact-form">
+                    <div id="formStatus" class="form-status hidden">
+                        <p>Thank you! Your message has been sent successfully. We'll get back to you soon.</p>
+                    </div>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Name *</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Company</label>
+                            <input type="text" id="company" name="company" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service Interested In *</label>
+                            <select id="service" name="service" class="form-control" required>
+                                <option value="all-services">All Services</option>
+                                <option value="business-process">Business Process Creation</option>
+                                <option value="data-automation">Data Analysis Automation</option>
+                                <option value="data-visualization">Data Visualization</option>
+                                <option value="business-reports">Custom Business Reports</option>
+                                <option value="market-reports">Market & Competition Reports</option>
+                                <option value="other">Other/Not Sure</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea id="message" name="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>BI for Growth</h4>
+                    <p>Transforming data into actionable business insights.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Business Process Creation</a></li>
+                        <li><a href="#services">Data Analysis Automation</a></li>
+                        <li><a href="#services">Data Visualization</a></li>
+                        <li><a href="#services">Custom Business Reports</a></li>
+                        <li><a href="#services">Market & Competition Reports</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="mailto:info@biforgrowth.com">info@biforgrowth.com</a></li>
+                        <li>Dublin, Ireland</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 BI for Growth. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
 </body>
 </html>
