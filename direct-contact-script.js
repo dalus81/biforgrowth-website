@@ -1,4 +1,4 @@
-// Direct FormSpree contact form handler
+// Contact form handler - Direct FormSpree submission
 document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.getElementById('contactForm');
   
@@ -39,8 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
           } else {
             alert('Thank you! Your message has been sent successfully. We\'ll get back to you soon.');
           }
-          
-          // Reset form
           contactForm.reset();
         } else {
           alert('Error: Something went wrong. Please try again.');
