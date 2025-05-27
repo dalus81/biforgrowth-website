@@ -6,7 +6,7 @@
   ],
   "routes": [
     { "src": "/api/contact", "dest": "/api/contact-fixed.js" },
-    { "src": "/(assets/.+)", "dest": "/dist/public/$1" },
+    { "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|ico|svg))", "dest": "/dist/public/$1" },
     { "src": "/(.*)", "dest": "/dist/public/index.html" }
   ]
 }
