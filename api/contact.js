@@ -1,42 +1,61 @@
-// api/contacts.js
-const axios = require('axios');
-
-module.exports = async (req, res) => {
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
-  }
-
-  try {
-    const contactData = req.body;
-
-    // Validation
-    if (!contactData.name || !contactData.email || !contactData.service || !contactData.message) {
-      return res.status(400).json({ message: 'Missing required fields' });
-    }
-
-    const formData = {
-      name: contactData.name,
-      email: contactData.email,
-      company: contactData.company || 'Not provided',
-      service: contactData.service,
-      message: contactData.message
-    };
-
-    const response = await axios.post('https://formspree.io/f/xgvkbknj', formData, {
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json'
+// Contact form handler
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault(); // Prevent the default form submission
+      
+      // Get form data
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        company: document.getElementById('company')?.value || '',
+        service: document.getElementById('service').value,
+        message: document.getElementById('message').value
+      };
+      
+      // Show loading state
+      const submitButton = contactForm.querySelector('button[type="submit"]');
+      const originalButtonText = submitButton.textContent;
+      submitButton.textContent = 'Sending...';
+      submitButton.disabled = true;
+      
+      try {
+        // Submit to your API endpoint
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        });
+        
+        const result = await response.json();
+        
+        if (response.ok) {
+          // Show success message
+          const formStatus = document.getElementById('formStatus');
+          if (formStatus) {
+            formStatus.classList.remove('hidden');
+            contactForm.style.display = 'none';
+          } else {
+            alert('Thank you! Your message has been sent successfully. We\'ll get back to you soon.');
+          }
+          
+          // Reset form
+          contactForm.reset();
+        } else {
+          alert('Error: ' + (result.message || 'Something went wrong. Please try again.'));
+        }
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('An error occurred while submitting the form. Please try again.');
+      } finally {
+        // Reset button state
+        submitButton.textContent = originalButtonText;
+        submitButton.disabled = false;
       }
     });
-
-    if (response.status >= 200 && response.status < 300) {
-      return res.status(201).json({ message: "Form submitted successfully" });
-    } else {
-      return res.status(500).json({ message: "Formspree rejected the submission" });
-    }
-
-  } catch (error) {
-    console.error("Form error:", error.message);
-    return res.status(500).json({ message: "Internal server error" });
   }
-};
+});
