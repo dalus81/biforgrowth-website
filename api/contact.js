@@ -9,6 +9,7 @@ module.exports = async (req, res) => {
   try {
     const contactData = req.body;
 
+    // Validation
     if (!contactData.name || !contactData.email || !contactData.service || !contactData.message) {
       return res.status(400).json({ message: 'Missing required fields' });
     }
@@ -29,13 +30,13 @@ module.exports = async (req, res) => {
     });
 
     if (response.status >= 200 && response.status < 300) {
-      return res.status(201).json({ message: "Contact form submitted successfully" });
+      return res.status(201).json({ message: "Form submitted successfully" });
     } else {
-      return res.status(500).json({ message: "Error sending email" });
+      return res.status(500).json({ message: "Formspree rejected the submission" });
     }
 
   } catch (error) {
-    console.error("Form submission error:", error);
+    console.error("Form error:", error.message);
     return res.status(500).json({ message: "Internal server error" });
   }
 };
