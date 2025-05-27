@@ -1,12 +1,9 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/contact-fixed.js", "use": "@vercel/node" },
     { "src": "dist/public/**", "use": "@vercel/static" }
   ],
   "routes": [
-    { "src": "/api/contact", "dest": "/api/contact-fixed.js" },
-    { "src": "/(.*\\.(css|js|png|jpg|jpeg|gif|ico|svg))", "dest": "/dist/public/$1" },
     { "src": "/(.*)", "dest": "/dist/public/index.html" }
   ]
 }
