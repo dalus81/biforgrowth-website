@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
-      e.preventDefault(); // Prevent the default form submission
+      e.preventDefault();
       
       // Get form data
       const formData = new FormData();
@@ -39,8 +39,6 @@ document.addEventListener('DOMContentLoaded', function() {
           } else {
             alert('Thank you! Your message has been sent successfully. We\'ll get back to you soon.');
           }
-          
-          // Reset form
           contactForm.reset();
         } else {
           alert('Error: Something went wrong. Please try again.');
@@ -55,4 +53,4 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-});
+});Add the script file to your dist/public/ folder
